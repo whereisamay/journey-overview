@@ -1,0 +1,63 @@
+/* Amay Design System — generated from tokens.json */
+:root, [data-theme="light"] {
+  --cream: #fbf5e9;
+  --cream-2: #f5eedd;
+  --ink: #1c1a16;
+  --ink-soft: #4a453c;
+  --mustard: #f2a93b;
+  --mustard-2: #f7c25f;
+  --coral: #f0603c;
+  --sage: #e4ede4;
+  --line: rgba(28, 26, 22, 0.14);
+  --line-soft: rgba(28, 26, 22, 0.08);
+  --on-ink-muted: rgba(251, 245, 233, 0.6);
+  --on-ink-line: rgba(251, 245, 233, 0.18);
+  --shadow-lift: 10px 14px 0 rgba(28, 26, 22, 0.9);
+  --shadow-nudge: 6px 8px 0 rgba(28, 26, 22, 0.9);
+}
+:root {
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-96: 96px;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+  --border-hair: 1px;
+  --border-icon: 1.5px;
+  --border-ui: 2px;
+  --border-frame: 5px;
+  --border-portrait: 6px;
+  --wrap: 1180px;
+  --measure-article: 720px;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.display-hero { font-family: var(--font-display); font-size: 68px; line-height: 1.06; font-weight: 600; letter-spacing: -0.01em; }
+.display-footer { font-family: var(--font-display); font-size: 64px; line-height: 1.08; font-weight: 600; }
+.display-page { font-family: var(--font-display); font-size: 56px; line-height: 1.1; font-weight: 600; letter-spacing: -0.01em; }
+.display-section { font-family: var(--font-display); font-size: 52px; line-height: 1.05; font-weight: 600; }
+.display-place { font-family: var(--font-display); font-size: 40px; line-height: 1.15; font-weight: 600; }
+.lead-serif { font-family: var(--font-display); font-size: 32px; line-height: 1.3; font-weight: 500; }
+.quote-pull { font-family: var(--font-display); font-size: 28px; line-height: 1.5; font-weight: 500; font-style: italic; }
+.title-h2 { font-family: var(--font-display); font-size: 30px; line-height: 1.25; font-weight: 600; }
+.wordmark { font-family: var(--font-display); font-size: 24px; line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
+.title-card { font-family: var(--font-display); font-size: 20px; line-height: 1.25; font-weight: 600; }
+.title-accordion { font-family: var(--font-display); font-size: 18px; line-height: 1.35; font-weight: 600; }
+.text-article { font-family: var(--font-body); font-size: 18px; line-height: 1.75; font-weight: 400; }
+.text-lede { font-family: var(--font-body); font-size: 17px; line-height: 1.5; font-weight: 400; }
+.text-body { font-family: var(--font-body); font-size: 16px; line-height: 1.5; font-weight: 400; }
+.label-nav { font-family: var(--font-body); font-size: 15px; line-height: 1.4; font-weight: 600; }
+.label-button { font-family: var(--font-body); font-size: 15px; line-height: 1.2; font-weight: 700; }
+.text-small { font-family: var(--font-body); font-size: 14px; line-height: 1.5; font-weight: 400; }
+.text-caption { font-family: var(--font-body); font-size: 13px; line-height: 1.4; font-weight: 500; }
+.label-eyebrow { font-family: var(--font-body); font-size: 13px; line-height: 1.4; font-weight: 700; letter-spacing: 0.08em; }
+.label-chip { font-family: var(--font-body); font-size: 12px; line-height: 1.4; font-weight: 700; letter-spacing: 0.04em; }

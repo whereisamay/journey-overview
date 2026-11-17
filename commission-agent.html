@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commission Analytics Agent, Amay Prabhu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Built on the Amay Design System: https://github.com/whereisamay/design-system -->
+<link rel="stylesheet" href="ds/tokens.css">
+<link rel="stylesheet" href="ds/components.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">Amay<span class="logo-dot">.</span></a>
+    <nav class="main-nav" aria-label="Sections">
+      <a href="index.html#journey">Journey</a>
+      <a href="index.html#ai">AI work</a>
+      <a href="index.html#writing">Published work</a>
+      <a href="index.html#next">What's next</a>
+    </nav>
+    <a class="icon-btn" href="https://www.linkedin.com/in/amay-prabhu-52b70a135/" aria-label="Amay on LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <a class="back-link" href="index.html#ai">← Back to the portfolio</a>
+      <p class="eyebrow">AI work · Built as an agent · Finmo</p>
+      <h1 class="page-title">Commission Analytics Agent</h1>
+      <p class="page-sub">Partners had a number of queries about their commission calculations.</p>
+      <div class="metrics">
+        <div><b class="num">40–45</b><span>weekly support queries removed</span></div>
+        <div><b class="num">15–20</b><span>active partners</span></div>
+        <div><b>Ledger</b><span>the only source of every number shown</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-body">
+    <div class="wrap">
+      <div class="two-col">
+        <div class="prose">
+          <h2>The problem</h2>
+          <p>Finmo's partners earn a share of the fees on every merchant they bring in. With many merchants, different pricing plans and several currencies, partners got a payout figure but couldn't see how it was built. So they asked support, 40 to 45 times a week.</p>
+          <h2>What we built</h2>
+          <p>First, a per-merchant breakdown: the pricing plan applied, Finmo's margin, the partner's share and the USD payout after FX. It came with an Excel export, because partners reconcile in their own spreadsheets.</p>
+          <p>Then an AI layer on top. Partners could ask questions about their commissions in plain language, question a trend, and find the insight that mattered to their business.</p>
+        </div>
+
+        <div>
+          <p class="eyebrow">What a partner sees</p>
+          <div class="chat" role="img" aria-label="Example conversation between a partner and the commission agent, using dummy data">
+            <div class="chat-head"><span>Partner workspace · Ask your data</span><span>Dummy data</span></div>
+            <div class="bubble q">Why is my commission lower this cycle? My volume was about the same.</div>
+            <div class="bubble a" style="max-width:100%">Your total volume was the same, $2.9M. What changed is the mix: far less of it went through FX conversions, and FX earns you the most commission per dollar.
+              <div class="ledger-wrap">
+                <table class="ledger">
+                  <thead><tr><th>Transaction type</th><th class="r">Cycle 21 TPV</th><th class="r">Cycle 22 TPV</th><th class="r">Commission 21 → 22</th></tr></thead>
+                  <tbody>
+                    <tr><td>Domestic pays</td><td class="r num">$1.20M</td><td class="r num">$1.55M</td><td class="r num">$1,200 → $1,550</td></tr>
+                    <tr><td>Domestic payouts</td><td class="r num">$0.80M</td><td class="r num">$0.95M</td><td class="r num">$400 → $475</td></tr>
+                    <tr><td class="cap">FX conversions</td><td class="r num">$0.90M</td><td class="r num">$0.40M</td><td class="r num cap">$3,600 → $1,600</td></tr>
+                    <tr class="total"><td><b>Total</b></td><td class="r num"><b>$2.90M</b></td><td class="r num"><b>$2.90M</b></td><td class="r num"><b>$5,200 → $3,625</b></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <span class="src">Source: commission ledger, payout cycles 21 and 22</span>
+            </div>
+            <div class="bubble q">So the drop is all FX?</div>
+            <div class="bubble a">Yes. Last cycle, FX conversions were 31% of your volume. This cycle they were 14%. Pays and payouts grew, but they earn far less per dollar, so they couldn't make up the gap.</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="arch">
+        <p class="eyebrow">How it fits together</p>
+        <h2 class="section-title" style="font-size:clamp(26px,3vw,34px)">Plain question in, structured query out, answer back</h2>
+        <ol class="arch-steps">
+          <li class="s-user"><span class="n">1</span><b>Partner asks</b><span>In plain text on the dashboard</span></li>
+          <li class="s-sys"><span class="n">2</span><b>Orchestrator</b><span>A simple orchestrator that sends the question and its tool list to the LLM. It hosts one tool today, with more planned for other types of queries.</span></li>
+          <li class="s-llm"><span class="n">3</span><b>LLM</b><span>Turns the question into a structured tool query</span></li>
+          <li class="s-sys"><span class="n">4</span><b>Our tools</b><span>Run the query on the commission module, for this partner only</span></li>
+          <li class="s-llm"><span class="n">5</span><b>LLM, then partner</b><span>Writes the answer from that data; the orchestrator shows it</span></li>
+        </ol>
+      </div>
+
+      <a class="next-page" href="fx-netting.html">
+        <span><span class="label">Other case study</span><br><span class="t">FX Netting Dashboard →</span></span>
+        <span class="btn btn-primary btn-sm">Read it</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-title">Let&rsquo;s build<br>something together.</h2>
+    <div class="footer-grid">
+      <span class="footer-email">amayvp96@gmail.com</span>
+      <div class="footer-socials"><a href="https://www.linkedin.com/in/amay-prabhu-52b70a135/">LinkedIn ↗</a><a href="index.html">Back to portfolio</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Amay Prabhu</span><a class="ds-credit" href="https://github.com/whereisamay/design-system"><i aria-hidden="true"></i>Built on the Amay Design System ↗</a></div>
+  </div>
+</footer>
+</body>
+</html>

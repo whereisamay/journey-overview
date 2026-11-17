@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FX Netting Dashboard, Amay Prabhu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Built on the Amay Design System: https://github.com/whereisamay/design-system -->
+<link rel="stylesheet" href="ds/tokens.css">
+<link rel="stylesheet" href="ds/components.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">Amay<span class="logo-dot">.</span></a>
+    <nav class="main-nav" aria-label="Sections">
+      <a href="index.html#journey">Journey</a>
+      <a href="index.html#ai">AI work</a>
+      <a href="index.html#writing">Published work</a>
+      <a href="index.html#next">What's next</a>
+    </nav>
+    <a class="icon-btn" href="https://www.linkedin.com/in/amay-prabhu-52b70a135/" aria-label="Amay on LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <a class="back-link" href="index.html#ai">← Back to the portfolio</a>
+      <p class="eyebrow">AI work · Built with code · Finmo</p>
+      <h1 class="page-title">FX Netting Dashboard</h1>
+      <p class="page-sub">A stopgap I built with Claude Code and shipped in days, while engineering worked on the long-term netting engine.</p>
+      <div class="metrics">
+        <div><b class="num">$400–500</b><span>saved per day by netting trades internally</span></div>
+        <div><b>Hours</b><span>of manual filtering removed every day</span></div>
+        <div><b class="num">500–600</b><span>transactions in each daily extract</span></div>
+      </div>
+      <div class="hero-shots" aria-label="Dummy-data screenshots of the tool">
+        <figure class="hs hs-1"><img src="img/fx-dashboard.webp" alt="Net positions screen with trades grouped by currency pair, dummy data" width="1500" height="1113"></figure>
+        <figure class="hs hs-2"><img src="img/fx-import.webp" alt="Import dialog that checks the file's columns before loading, dummy data" width="1500" height="684"></figure>
+        <span class="hs-cap">Dummy data</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-body">
+    <div class="wrap">
+      <div class="two-col">
+        <div class="prose">
+          <h2>The problem</h2>
+          <p>Finmo's treasury and FinOps teams sent every FX trade to a liquidity provider, even when opposing trades in the same currency pair could cancel each other out. Finding those pairs meant filtering hundreds of rows by hand every day. The team lost hours, and the company paid charges it didn't need to.</p>
+          <h2>What I built</h2>
+          <p>Engineering was still designing a proper netting engine. Rather than wait, I used Claude Code to build a dashboard on top of the existing daily extract. It groups trades into buckets and shows every net position in one place.</p>
+          <h2>The scale</h2>
+          <p>Each day's extract held 500 to 600 transactions across several currency pairs and value dates. Netting the opposing ones internally saved about $400–500 a day, roughly $10–15K a month, on top of the hours FinOps no longer spent filtering by hand.</p>
+          <p class="pull">It never writes to the production database. That's what made it safe to ship fast.</p>
+        </div>
+        <div>
+          <p class="eyebrow">How it works</p>
+          <ol class="steps">
+            <li><b>Download the extract</b>FinOps pulls the day's transactions from the back-office admin portal.<br><span class="who sys">Person</span></li>
+            <li><b>Upload it to the tool</b>The tool checks the columns match before loading any rows.<br><span class="who sys">Person</span></li>
+            <li><b>The tool groups opposing trades</b>Trades are bucketed by currency pair and value date, with the net position for each.<br><span class="who ai">AI</span></li>
+            <li><b>FinOps picks what to net</b>They export a JSON of the netted trades plus the residual amount that wasn't netted.<br><span class="who hu">Expert decides</span></li>
+            <li><b>The JSON goes back to the back office</b>It updates transaction statuses and creates new line items for the residual trades.<br><span class="who sys">System</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="decisions">
+        <div><h3>Every exclusion has a reason</h3><p>A trade can be left out of a bucket, but only with a note like "Cancelled after cutoff". Anyone can see why later.</p></div>
+        <div><h3>Check the input first</h3><p>The import confirms the columns before loading rows, so bad data is caught before anything is calculated.</p></div>
+        <div><h3>Hand off a file</h3><p>The tool exports JSON that the existing back office already knew how to read, which kept it out of the critical path.</p></div>
+      </div>
+
+      <div class="shot-section">
+        <p class="eyebrow">The tool, step by step</p>
+        <h2 class="title-h2-sm">A look inside</h2>
+        <div class="photo-carousel wide" aria-roledescription="carousel" aria-label="Screenshots of the FX netting tool, dummy data">
+          <div class="photo-carousel-track">
+            <figure class="photo-carousel-slide">
+              <div class="photo-carousel-media"><img src="img/fx-dashboard.webp" alt="Net positions screen: trades grouped into four currency-pair buckets, with AUD/USDT expanded to show seven trades, one excluded with the reason 'Cancelled after cutoff'" width="1500" height="1113" loading="lazy"></div>
+              <figcaption class="car-cap"><span class="photo-carousel-num">01</span><span><b>Net positions.</b> Trades are grouped by currency pair and value date, each bucket showing its net position and implied rate. FinOps ticks the trades to net, and anything left out needs a reason.</span></figcaption>
+            </figure>
+            <figure class="photo-carousel-slide">
+              <div class="photo-carousel-media"><img src="img/fx-import.webp" alt="Import dialog: a Google Sheets link is pasted, and the tool detects 17 rows, 4 currency pairs and 3 value dates, with the schema matched" width="1500" height="684" loading="lazy"></div>
+              <figcaption class="car-cap"><span class="photo-carousel-num">02</span><span><b>Import.</b> FinOps pastes the day's sheet. Before anything loads, the tool checks the columns and shows how many rows, pairs and value dates it found.</span></figcaption>
+            </figure>
+            <figure class="photo-carousel-slide">
+              <div class="photo-carousel-media"><img src="img/fx-history.webp" alt="Import history: the last eight imports with source sheet, time, rows, buckets and status (active, export completed or discarded)" width="1500" height="853" loading="lazy"></div>
+              <figcaption class="car-cap"><span class="photo-carousel-num">03</span><span><b>Import history.</b> Every import is logged with its source sheet, rows and status, so an earlier net position can be rebuilt from the sheet it came from.</span></figcaption>
+            </figure>
+          </div>
+          <div class="photo-carousel-controls"><button class="carousel-btn" type="button" data-dir="prev" aria-label="Previous screenshot">←</button><div class="photo-carousel-dots"></div><button class="carousel-btn" type="button" data-dir="next" aria-label="Next screenshot">→</button></div>
+          <p class="caption" style="text-align:center">Dummy data. The live tool sat on Finmo's internal domain.</p>
+        </div>
+      </div>
+
+      <a class="next-page" href="commission-agent.html">
+        <span><span class="label">Next case study</span><br><span class="t">Commission Analytics Agent →</span></span>
+        <span class="btn btn-primary btn-sm">Read it</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-title">Let&rsquo;s build<br>something together.</h2>
+    <div class="footer-grid">
+      <span class="footer-email">amayvp96@gmail.com</span>
+      <div class="footer-socials"><a href="https://www.linkedin.com/in/amay-prabhu-52b70a135/">LinkedIn ↗</a><a href="index.html">Back to portfolio</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Amay Prabhu</span><a class="ds-credit" href="https://github.com/whereisamay/design-system"><i aria-hidden="true"></i>Built on the Amay Design System ↗</a></div>
+  </div>
+</footer>
+<script src="ds/components.js"></script>
+<script>AmayDS.initCarousels();</script>
+</body>
+</html>
